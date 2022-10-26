@@ -1,10 +1,14 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import toast from 'react-hot-toast';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthProvider/Authprovider';
 
 const Register = () => {
-    const { createUser } = useContext(AuthContext);
+    const [error, setError] = useState('');
+    const [accepted, setAccepted] = useState(false);
+    const { createUser, updateUserProfile, verifyEmail } = useContext(AuthContext);
 
 
     const handleSubmit = (event)=>{
@@ -21,11 +25,42 @@ const Register = () => {
             const user = result.user;
             console.log(user);
             form.reset();
+            setError('');
+            // handleEmailVerification();
+            handleUpdateUserProfile(name, photoURL);
+            toast.success('Please verify your email address before login');
         })
         .catch(error=>{
             console.error("Error: ", error);
+            setError(error.message);
         })
     }
+
+    const handleUpdateUserProfile=(name, photoURL)=>{
+        const profile = {
+            displayName: name,
+            photoURL: photoURL,
+        }
+        updateUserProfile(profile)
+        .then(()=>{})
+        .catch(error=>{
+            console.error(error);
+        })
+
+    }
+
+    const handleEmailVerification = () =>{
+        verifyEmail()
+        .then(()=>{})
+        .catch(error => {
+            console.error(error);
+        })
+    }
+
+    const handleAccepted = event => {
+        setAccepted(event.target.checked)
+    }
+
     return (
         <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -48,14 +83,20 @@ const Register = () => {
                 <Form.Control name='password' type="password" placeholder="Password" required />
             </Form.Group>
             <Form.Group className='mb-3'>
-                <Form.Text className="text-muted">
-                    We'll never share your email with anyone else.
+                <Form.Text className="text-danger fw-bold">
+                    {error}
                 </Form.Text>
+            <Form.Group className="mb-3" controlId="formBasicCheckbox">
+                <Form.Check type="checkbox" 
+                onClick={handleAccepted}
+                label={<>Accept <Link to='/terms'>Terms and Conditions</Link></>}  required/>
             </Form.Group>
-            <Button variant="primary" type="submit">
+            </Form.Group>
+            <Button variant="primary" type="submit" disabled = {!accepted}>
                 Register
             </Button>
         </Form>
+
     );
 };
 

@@ -1,0 +1,14 @@
+import React from 'react';
+import { Link } from 'react-router-dom';
+
+const TermsAndConditions = () => {
+    return (
+        <div>
+            <h2>Terms & Conditions</h2>
+            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Doloremque eaque ipsa necessitatibus ullam illum asperiores iusto hic, ad earum ratione dicta nihil. Itaque temporibus commodi excepturi. Dignissimos, voluptas vero ab sunt maiores quidem quae ipsum iste doloribus suscipit aperiam consequuntur facere culpa tenetur accusamus. Dicta corporis similique aperiam, repellat voluptatum beatae dolorum at quasi velit nam minima quas dolor possimus dolore quam distinctio eveniet! Eaque iste molestiae, similique error blanditiis quam dolor repellendus dolorum explicabo dignissimos suscipit velit quae eius accusantium sed deserunt inventore. Sint illum animi exercitationem molestias corporis accusamus cum repudiandae vitae reiciendis blanditiis veritatis perferendis ea maiores quibusdam error quasi, quis dolor. Debitis obcaecati voluptatum saepe consequatur porro sit voluptatibus. Quaerat ut eveniet praesentium voluptatum esse ullam rerum necessitatibus quasi nulla ex maxime magni nemo quos obcaecati temporibus amet cumque, dolorum, a aliquam maiores sequi? Id, molestiae exercitationem! Architecto dolorum facilis accusamus perspiciatis quod debitis. Impedit voluptatem dolorem eum voluptates ipsa, pariatur quo voluptatum necessitatibus maiores aspernatur minus expedita voluptatibus ab deleniti excepturi doloremque omnis suscipit et iusto! Error blanditiis quos ratione obcaecati rerum earum, natus fuga cupiditate numquam? Fuga voluptates unde dicta magnam at, magni quo quod, placeat animi eius aperiam recusandae nostrum aliquid in doloribus quae quibusdam. Fugit aspernatur enim earum quidem iure culpa sequi et, consectetur, atque eaque ea, repellendus veniam asperiores quas velit porro dicta explicabo maxime quo! Vel, error optio. Natus veritatis consequatur iure nulla nostrum ducimus, eligendi voluptatum eos corporis et, ex eum pariatur iusto itaque dolorem ab odio error labore perferendis. Adipisci delectus distinctio asperiores, officiis ullam modi saepe autem quos voluptatem porro, tempora earum, nisi repellendus. Exercitationem dignissimos maxime architecto, quod sunt recusandae pariatur. Placeat officia alias dolorem, nihil numquam quos voluptates, hic, cumque accusantium vel dicta. Reprehenderit dignissimos veritatis laborum at ratione excepturi tempore? Sunt facere culpa laudantium.</p>
+            <p>Go back to: <Link to='/register'>Register</Link></p>
+        </div>
+    );
+};
+
+export default TermsAndConditions;

@@ -4,6 +4,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import toast from 'react-hot-toast';
 import { FaUserAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthProvider/Authprovider';
@@ -19,6 +20,7 @@ const Header = () => {
             console.error(error);
         })
     }
+    
     return (
         <Navbar className='mb-4' collapseOnSelect expand="lg" bg="light" variant="light">
             <Container>
@@ -41,7 +43,7 @@ const Header = () => {
                         </NavDropdown>
                     </Nav>
                     <Nav>
-                        <Nav.Link href="#deets">
+                        <>
                             {user?.uid ? 
                             <>
                             <span>{user?.displayName}</span>
@@ -49,17 +51,17 @@ const Header = () => {
                             </>
                             :
                             <>
-                                <Link to ='/login'>Login</Link>
+                                <Link className='me-2' to ='/login'>Login</Link>
                                 <Link to ='/register'>Register</Link>
                             </>
                             }
-                        </Nav.Link>
-                        <Nav.Link eventKey={2} href="#memes">
+                        </>
+                        <Link to="/profile">
                             {user?.photoURL ? 
                             <Image roundedCircle style={{height: '40px'}} src={user?.photoURL}></Image>
                             :
                             <FaUserAlt></FaUserAlt>}
-                        </Nav.Link>
+                        </Link>
                     </Nav>
                     <div className='d-lg-none'>
                         <LeftSideNav></LeftSideNav>
